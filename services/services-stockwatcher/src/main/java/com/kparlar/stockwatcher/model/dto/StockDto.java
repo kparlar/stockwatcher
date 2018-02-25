@@ -12,6 +12,11 @@ public class StockDto {
     private Double currentPrice;
     private Date lastUpdate;
 
+
+    public StockDto(){
+
+    }
+
     public StockDto(Long id, String name, Double currentPrice, Date lastUpdate){
         this.id = id;
         this.name = name;

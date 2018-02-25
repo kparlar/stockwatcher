@@ -1,5 +1,6 @@
 package com.kparlar.stockwatcher.controller.app;
 
+import com.kparlar.stockwatcher.exception.StockWatcherBadRequestException;
 import com.kparlar.stockwatcher.exception.StockWatcherNotFoundException;
 import com.kparlar.stockwatcher.model.dto.StockDto;
 import com.kparlar.stockwatcher.services.StockService;
@@ -8,10 +9,7 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -42,5 +40,15 @@ public class StockController {
                     @ApiResponse(code = 500, message = "Internal Server Error") })
     public ResponseEntity<StockDto> getStock(@PathVariable(value = "id") Long id) throws StockWatcherNotFoundException {
         return new ResponseEntity<>(stockService.getStock(id), HttpStatus.OK);
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    @ApiOperation(value = "Create stock", notes = "If any internal error occured, GlobalControllerException handler return 500 error with unique id")
+    @ApiResponses(value =
+            {@ApiResponse(code = 200, message = "Successfully created stock."),
+                    @ApiResponse(code = 400, message = "If data is not valid to persist, this error code returns with explanation"),
+                    @ApiResponse(code = 500, message = "Internal Server Error") })
+    public ResponseEntity<StockDto> createStock(@RequestBody(required = true)StockDto stockDto) throws StockWatcherBadRequestException {
+        return new ResponseEntity<>(stockService.createStock(stockDto), HttpStatus.OK);
     }
 }
