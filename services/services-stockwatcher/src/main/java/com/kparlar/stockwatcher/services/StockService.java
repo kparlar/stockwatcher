@@ -1,6 +1,7 @@
 package com.kparlar.stockwatcher.services;
 
 import com.kparlar.stockwatcher.exception.StockWatcherBadRequestException;
+import com.kparlar.stockwatcher.exception.StockWatcherException;
 import com.kparlar.stockwatcher.exception.StockWatcherNotFoundException;
 import com.kparlar.stockwatcher.model.dto.StockDto;
 import com.kparlar.stockwatcher.model.entity.Stock;
@@ -44,7 +45,7 @@ public class StockService {
                 .withName(stockDto.getName())
                 .withCurrentPrice(stockDto.getCurrentPrice())
                 .withLastUpdate(new Date()).buildStock();
-        stockRepository.save(stock);
+        stock = stockRepository.save(stock);
         return new StockDto(stock.getId(), stock.getName(), stock.getCurrentPrice(), stock.getLastUpdate());
     }
 
@@ -55,7 +56,10 @@ public class StockService {
         else return false;
     }
 
-    public StockDto updateStockPrice(Long id, StockDto stockDto) throws StockWatcherNotFoundException {
+    public StockDto updateStockPrice(Long id, StockDto stockDto) throws StockWatcherException{
+        if(stockDto.getCurrentPrice() == null){
+            throw new StockWatcherBadRequestException(MessageCodeConstants.NOT_VALID_CURRENT_PRICE_VALUE_EXCEPTION_MESSAGE, MessageCodeConstants.NOT_VALID_CURRENT_PRICE_VALUE_EXCEPTION_CODE, true);
+        }
         Stock stock = findStockById(id);
         stock.setCurrentPrice(stockDto.getCurrentPrice());
         stockRepository.save(stock);

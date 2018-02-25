@@ -1,6 +1,7 @@
 package com.kparlar.stockwatcher.controller.app;
 
 import com.kparlar.stockwatcher.exception.StockWatcherBadRequestException;
+import com.kparlar.stockwatcher.exception.StockWatcherException;
 import com.kparlar.stockwatcher.exception.StockWatcherNotFoundException;
 import com.kparlar.stockwatcher.model.dto.StockDto;
 import com.kparlar.stockwatcher.services.StockService;
@@ -27,7 +28,7 @@ public class StockController {
     @ApiOperation(value = "Get all stocks", notes = "If any internal error occured, GlobalControllerException handler return 500 error with unique id")
     @ApiResponses(value =
             {@ApiResponse(code = 200, message = "Successfully get all stocks"),
-                    @ApiResponse(code = 500, message = "Internal Server Error") })
+                    @ApiResponse(code = 500, message = "Internal Server Error, thrown by GlobalControllerException") })
     public ResponseEntity<List<StockDto>> getAllStocks(){
         return new ResponseEntity<>(stockService.getAllStocks(), HttpStatus.OK);
     }
@@ -57,9 +58,10 @@ public class StockController {
     @ApiOperation(value = "Update stock price", notes = "If any internal error occured, GlobalControllerException handler return 500 error with unique id")
     @ApiResponses(value =
             {@ApiResponse(code = 200, message = "Successfully stock is updated."),
+                    @ApiResponse(code = 400, message = "Not Valid Exception thrown if current price value is not valid"),
                     @ApiResponse(code = 404, message = "Not Found Exception thrown if there is no data for given id"),
                     @ApiResponse(code = 500, message = "Internal Server Error") })
-    public ResponseEntity<StockDto> updateStockPrice(@PathVariable(value = "id") Long id, @RequestBody(required = true)StockDto stockDto) throws StockWatcherNotFoundException {
+    public ResponseEntity<StockDto> updateStockPrice(@PathVariable(value = "id") Long id, @RequestBody(required = true)StockDto stockDto) throws StockWatcherException {
         return new ResponseEntity<>(stockService.updateStockPrice(id, stockDto), HttpStatus.OK);
     }
 }

@@ -13,11 +13,6 @@ public abstract class StockWatcherObject {
             @org.hibernate.annotations.Parameter(name = "uuid_gen_strategy_class", value = "org.hibernate.id.uuid.CustomVersionOneStrategy") })
     private String uuid;
 
-
-    public String getUuid() {
-        return uuid;
-    }
-
     public void setUuid(String uuid) {
         this.uuid = uuid;
     }

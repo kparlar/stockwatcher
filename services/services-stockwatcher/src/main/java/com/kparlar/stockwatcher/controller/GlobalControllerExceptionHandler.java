@@ -38,7 +38,7 @@ public class GlobalControllerExceptionHandler extends ResponseEntityExceptionHan
         return new ResponseEntity<>(exceptionMessage, HttpStatus.INTERNAL_SERVER_ERROR);
     }
     @ExceptionHandler(StockWatcherException.class)
-    protected ResponseEntity<ExceptionMessage> handleDtException(StockWatcherException e) {
+    protected ResponseEntity<ExceptionMessage> handleStockWatcherException(StockWatcherException e) {
         ExceptionMessage exceptionMessage = new ExceptionMessage();
         exceptionMessage.getErrors().add(String.format("%s : %s",e.getErrorCode(), e.getErrorMessage()));
         log.error(e.getErrorMessage(), e.getErrorCode(), e);

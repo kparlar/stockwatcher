@@ -10,7 +10,7 @@ public final class MessageCodeConstants {
     public static final String DATA_INSERTED_BEFORE_EXCEPTION_MESSAGE = "Data inserted before. id :%s";
     public static final String DATA_INSERTED_BEFORE_EXCEPTION_CODE = "EX03";
 
-    private MessageCodeConstants() {
-        throw new IllegalAccessError("Utility class");
-    }
+    public static final String NOT_VALID_CURRENT_PRICE_VALUE_EXCEPTION_MESSAGE = "Current Price value is not valid.";
+    public static final String NOT_VALID_CURRENT_PRICE_VALUE_EXCEPTION_CODE = "EX04";
+
 }

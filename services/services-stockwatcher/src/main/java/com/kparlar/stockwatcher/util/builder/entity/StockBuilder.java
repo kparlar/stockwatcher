@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class StockBuilder {
 
-    private String uuid;
+
     private Long id;
     private String name;
     private Double currentPrice;
@@ -17,10 +17,7 @@ public class StockBuilder {
         return new StockBuilder();
     }
 
-    public StockBuilder withUuid(String uuid){
-        this.uuid = uuid;
-        return this;
-    }
+
 
     public StockBuilder withId(Long id){
         this.id = id;
@@ -47,7 +44,6 @@ public class StockBuilder {
         stock.setId(this.id);
         stock.setLastUpdate(this.lastUpdate);
         stock.setName(this.name);
-        stock.setUuid(this.uuid);
         return stock;
     }
 
