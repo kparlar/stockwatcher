@@ -51,4 +51,15 @@ public class StockController {
     public ResponseEntity<StockDto> createStock(@RequestBody(required = true)StockDto stockDto) throws StockWatcherBadRequestException {
         return new ResponseEntity<>(stockService.createStock(stockDto), HttpStatus.OK);
     }
+
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    @ApiOperation(value = "Update stock price", notes = "If any internal error occured, GlobalControllerException handler return 500 error with unique id")
+    @ApiResponses(value =
+            {@ApiResponse(code = 200, message = "Successfully stock is updated."),
+                    @ApiResponse(code = 404, message = "Not Found Exception thrown if there is no data for given id"),
+                    @ApiResponse(code = 500, message = "Internal Server Error") })
+    public ResponseEntity<StockDto> updateStockPrice(@PathVariable(value = "id") Long id, @RequestBody(required = true)StockDto stockDto) throws StockWatcherNotFoundException {
+        return new ResponseEntity<>(stockService.updateStockPrice(id, stockDto), HttpStatus.OK);
+    }
 }

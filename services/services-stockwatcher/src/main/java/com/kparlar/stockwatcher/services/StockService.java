@@ -29,11 +29,7 @@ public class StockService {
     }
 
     public StockDto getStock(Long id) throws StockWatcherNotFoundException {
-        Stock stock = stockRepository.findById(id);
-        if(stock == null) {
-            String errorMessage = String.format(MessageCodeConstants.NOT_FOUND_EXCEPTION_MESSAGE, id);
-            throw new StockWatcherNotFoundException(errorMessage, MessageCodeConstants.NOT_FOUND_EXCEPTION_CODE, true);
-        }
+        Stock stock = findStockById(id);
         return new StockDto(stock.getId(), stock.getName(), stock.getCurrentPrice(), stock.getLastUpdate());
     }
 
@@ -57,5 +53,20 @@ public class StockService {
         if(stock !=null)
             return true;
         else return false;
+    }
+
+    public StockDto updateStockPrice(Long id, StockDto stockDto) throws StockWatcherNotFoundException {
+        Stock stock = findStockById(id);
+        stock.setCurrentPrice(stockDto.getCurrentPrice());
+        stockRepository.save(stock);
+        return new StockDto(stock.getId(), stock.getName(), stock.getCurrentPrice(), stock.getLastUpdate());
+    }
+    private Stock findStockById(Long id) throws StockWatcherNotFoundException {
+        Stock stock = stockRepository.findById(id);
+        if(stock == null) {
+            String errorMessage = String.format(MessageCodeConstants.NOT_FOUND_EXCEPTION_MESSAGE, id);
+            throw new StockWatcherNotFoundException(errorMessage, MessageCodeConstants.NOT_FOUND_EXCEPTION_CODE, true);
+        }
+        return stock;
     }
 }
