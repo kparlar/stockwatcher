@@ -1,8 +1,10 @@
 package com.kparlar.stockwatcher.services;
 
+import com.kparlar.stockwatcher.exception.StockWatcherNotFoundException;
 import com.kparlar.stockwatcher.model.dto.StockDto;
 import com.kparlar.stockwatcher.model.entity.Stock;
 import com.kparlar.stockwatcher.repository.StockRepository;
+import com.kparlar.stockwatcher.util.MessageCodeConstants;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,5 +23,14 @@ public class StockService {
     public List<StockDto> getAllStocks(){
         List<Stock> stocks = (List<Stock>) stockRepository.findAll();
         return stocks.stream().map(stock -> new StockDto(stock.getId(), stock.getName(), stock.getCurrentPrice(), stock.getLastUpdate())).collect(Collectors.toList());
+    }
+
+    public StockDto getStock(Long id) throws StockWatcherNotFoundException {
+        Stock stock = stockRepository.findById(id);
+        if(stock == null) {
+            String errorMessage = String.format(MessageCodeConstants.NOT_FOUND_EXCEPTION_MESSAGE, id);
+            throw new StockWatcherNotFoundException(errorMessage, MessageCodeConstants.NOT_FOUND_EXCEPTION_CODE, true);
+        }
+        return new StockDto(stock.getId(), stock.getName(), stock.getCurrentPrice(), stock.getLastUpdate());
     }
 }
