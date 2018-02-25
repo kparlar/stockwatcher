@@ -1,5 +1,8 @@
 package com.kparlar.stockwatcher.model.dto;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.kparlar.stockwatcher.model.json.JsonDateSerializer;
+
 import java.util.Date;
 
 public class StockDto {
@@ -39,7 +42,7 @@ public class StockDto {
     public void setCurrentPrice(Double currentPrice) {
         this.currentPrice = currentPrice;
     }
-
+    @JsonSerialize(using = JsonDateSerializer.class)
     public Date getLastUpdate() {
         return lastUpdate;
     }
