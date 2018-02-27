@@ -25,7 +25,7 @@ public class StockService {
 
 
     public List<StockDto> getAllStocks(){
-        List<Stock> stocks = (List<Stock>) stockRepository.findAll();
+        List<Stock> stocks = stockRepository.getAllByOrderByIdAsc();
         return stocks.stream().map(stock -> new StockDto(stock.getId(), stock.getName(), stock.getCurrentPrice(), stock.getLastUpdate())).collect(Collectors.toList());
     }
 
