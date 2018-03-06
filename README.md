@@ -47,7 +47,7 @@ entity model.
 H2 db is used, given below there is a image how to login the H2 db after starting the application
 Tables are also given below.
 
-![H2 Console for Powerfiler](img/h2_console.PNG?raw=true "H2 Console for Powerfiler")
+![H2 Console for Stockwatcher](img/h2_console.PNG?raw=true "H2 Console for Stockwatcher")
 ![Dtabase Tables](img/db_tables.PNG?raw=true "Dtabase Tables")
 
 
@@ -66,10 +66,10 @@ There is a mock framework library used (SinonJS) and also assertion library used
 ## How To Run
 After git clone, you can directly run from your ide as any spring-boot project. When the application stated
 you can use the postman request to insert data or get data.
-Or if you want to run jar, first you have to clone the project from repository, inside the powerfiler folder run first
+Or if you want to run jar, first you have to clone the project from repository, (please dont forget to checkout feature/initial-commit branch, cause this code has not been merged to master branch yet.) inside the Stockwatcher folder  go to services\services-stockwatcher folder. Inside services-stockwatcher folder run first
 **mvn package** (run this under services-stockwatcher folder)
 this will build a jar called **stockwatcher-0.0.1-SNAPSHOT.jar** under target folder. 
-Than you can run the application with  **java -jar stockwatcher-0.0.1-SNAPSHOT.jar** command.
+Than go to target folder and you can run the application with  **java -jar stockwatcher-0.0.1-SNAPSHOT.jar** command.
 
 when the service is on, it will host on port 8010. Here I use Flyway to ingest data under folder
 \services-stockwatcher\src\resources\db\migration\V1_2__init.sql. I will also use liquibase but prefer this one, this is much more easy implementation, but i admire Liquibase.
@@ -77,7 +77,8 @@ when the service is on, it will host on port 8010. Here I use Flyway to ingest d
 For Service query please take a look to Postman Section
  
  
- For Front-end  under \stockwatcher\web\web-stockwatcher-vue   folder from command line run
+ For Front-end  under \stockwatcher\web\web-stockwatcher-vue   folder from command line run first 
+ **npm install** to install all the node packages (if node-sass gives error on finding binding cause of your local configuration, try to do what is written in the error message, if could not success, than rerun npm install so this will skip node-sass build) and then
 **npm run dev** this will run webpack first build the VUE project and if there is no error gives the path of the application like given below.  ( you can display the web ui from http://localhost:8080) 
 
 ![Start Front-End](img/start-front-end.PNG?raw=true "Start Front End")
