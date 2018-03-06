@@ -1,6 +1,5 @@
 # Stockwatcher
 Dummy Stock Watch Application with Front-end written in VUE2 framework.
-This 
 This is an example project for implementing a given use cases.
 I have given a name Stockwatcher.
 Have fun.
@@ -24,7 +23,7 @@ Have fun.
     * Assertion: Sinon-Chai
     
 ## Api End Points
-For detailed api check Swagger please, swagger annotation is used in this project.
+Swagger annotation is used in this project.
 You can check it from this link, http://localhost:8010/swagger-ui.html#/
 Also here is the screenshot for swagger.
 
@@ -38,7 +37,7 @@ Postman Collections are in the postman folder. There is a screenshot below.
 
 
 ## Entity Model
-Given below Powerfiler Project entity model. JPA is used as an api, and InheritanceType.TABLE_PER_CLASS type
+Given below Stockwatcher Project entity model. JPA is used as an api, and InheritanceType.TABLE_PER_CLASS type
 strategy is used to make it generic for each entity classes, so inheritance is easily implemented to this
 entity model.
 
@@ -54,12 +53,12 @@ Tables are also given below.
 
 
 ## Back-End UnitTest
-21 Unit Tests are written with %68 class coverage, %86 line coverage. This will be leverage but these test will show how i handle test cases.
+21 Unit Tests are written with %68 class coverage, %86 line coverage. This will be leverage but these tests will show how i handle test cases.
 
 ![Back-End Unit Test Coverage](img/test-coverage-back-end.PNG?raw=true "Unit Test Coverage")
 
 ## Front-End UnitTest
-3 Unit Tests are written with %37 line coverage. This is just to shwo how i handle the test cases.
+3 Unit Tests are written with %37 line coverage. This is just to show how i handle the test cases.
 There is a mock framework library used (SinonJS) and also assertion library used (Chai). For Test Runner Karma is prefered and Mocha Test Framework JS library is used for writing unit test in javascript.  Sinon-stub-promise is used for Service testing stubbing promise operations.
 
 ![Front-End Unit Test Coverage](img/test-coverage-back-end.PNG?raw=true "Unit Test Coverage")
@@ -87,7 +86,7 @@ I have use Eslint for standardization in Javascript:
 please take a look to this page for standardization that i used.
 https://github.com/standard/standard/blob/master/docs/RULES-en.md
 
-User Babel for compiler.
+Used Babel for compiler.
 
 Not added Sass cause it is a small project. maybe added later.
 
@@ -100,7 +99,7 @@ There are 8 sonar issues left to resolve , they are not a big issue but needs ti
 ![SONAR](img/sonar.PNG?raw=true "SONAR")
 
 
-## Screen
+## Screens
 
 Here some screens from application given below.
 ![Screen 1](img/screen_1.PNG?raw=true "Screen 1")
