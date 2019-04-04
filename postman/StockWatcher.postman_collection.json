@@ -1,0 +1,150 @@
+{
+	"id": "c3258d89-b67e-42dc-e17f-6be8ca9dcf84",
+	"name": "StockWatcher",
+	"description": "",
+	"order": [],
+	"folders": [
+		{
+			"name": "app",
+			"description": "",
+			"collectionId": "c3258d89-b67e-42dc-e17f-6be8ca9dcf84",
+			"order": [
+				"fd92400b-17ef-9d6b-b8eb-fb799d7169c9",
+				"0bdbcb57-e626-c650-0087-26dc4e0bb3a8",
+				"af29d8e6-ae32-6714-928f-210462e64ef7",
+				"1307cfef-e2c6-5598-6ff7-9bb981a5b27a"
+			],
+			"owner": 0,
+			"folders_order": [],
+			"id": "4e523d51-c72a-460e-2fb5-80ecbe10edc6"
+		}
+	],
+	"folders_order": [
+		"4e523d51-c72a-460e-2fb5-80ecbe10edc6"
+	],
+	"timestamp": 1519565872476,
+	"owner": 0,
+	"public": false,
+	"requests": [
+		{
+			"id": "0bdbcb57-e626-c650-0087-26dc4e0bb3a8",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/api/app/stock-watcher/v1/stocks/1",
+			"folder": "4e523d51-c72a-460e-2fb5-80ecbe10edc6",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1519569385484,
+			"name": "GetStock",
+			"description": "",
+			"collectionId": "c3258d89-b67e-42dc-e17f-6be8ca9dcf84",
+			"responses": [],
+			"rawModeData": ""
+		},
+		{
+			"id": "1307cfef-e2c6-5598-6ff7-9bb981a5b27a",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/api/app/stock-watcher/v1/stocks/1",
+			"folder": "4e523d51-c72a-460e-2fb5-80ecbe10edc6",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "PUT",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1519574363964,
+			"name": "UpdateStockPrice",
+			"description": "Only updates currentPrice of the Stock Data",
+			"collectionId": "c3258d89-b67e-42dc-e17f-6be8ca9dcf84",
+			"responses": [],
+			"rawModeData": "{\r\n    \"currentPrice\": 20.5\r\n}\t\r\n\r\n \r\n"
+		},
+		{
+			"id": "af29d8e6-ae32-6714-928f-210462e64ef7",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/api/app/stock-watcher/v1/stocks",
+			"folder": "4e523d51-c72a-460e-2fb5-80ecbe10edc6",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1519570423726,
+			"name": "CreateStock",
+			"description": "",
+			"collectionId": "c3258d89-b67e-42dc-e17f-6be8ca9dcf84",
+			"responses": [],
+			"rawModeData": "{\r\n    \"id\": 11,\r\n    \"name\": \"Stock 11\",\r\n    \"currentPrice\": 1100.5\r\n}\t\r\n\r\n \r\n"
+		},
+		{
+			"id": "fd92400b-17ef-9d6b-b8eb-fb799d7169c9",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8010/api/app/stock-watcher/v1/stocks",
+			"folder": "4e523d51-c72a-460e-2fb5-80ecbe10edc6",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1519595615485,
+			"name": "Get All Stocks",
+			"description": "",
+			"collectionId": "c3258d89-b67e-42dc-e17f-6be8ca9dcf84",
+			"responses": [],
+			"rawModeData": ""
+		}
+	]
+}
